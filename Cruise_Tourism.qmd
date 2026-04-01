@@ -80,7 +80,7 @@ save(data, file = paste0("data/cruises_", today(), ".RData"))
 ```{r}
 #| label: load data
 
-file_name <- "data/cruises_2026-04-01.RData"
+file_name <- "data/cruises_2026-03-31.RData"
 load(file_name)
 ```
 
