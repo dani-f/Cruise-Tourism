@@ -1,4 +1,5 @@
 ---
+freeze: false
 title: "Cruise Tourism Is More Extreme Than You Think"
 author: "Me"
 date: today
@@ -440,9 +441,9 @@ data_clean_enriched %>%
 
 <br /> The largest ship by length was the *Anthem of the Seas*, measuring 347 meters. In terms of capacity, the Arvia stands out, carrying up to 6.685 passengers.
 
-To put this into perspective, lining up all cruise ships arriving in the year 2025 would create a chain over 48 kilometers long — as long as the road from A Coruña to Ferrol.
+To put this into perspective, lining up all cruise ships arriving in the year 2025 would create a chain over 48 kilometers long — as long as the route from A Coruña to Ferrol.
 
-:::: panel-tabset
+::: panel-tabset
 #### Largest Cruises (length)
 
 ```{r}
