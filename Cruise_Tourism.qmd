@@ -326,11 +326,9 @@ data_clean_enriched %>%
 #| label: weekdays
 
 data_clean_enriched %>%
-  count(year = year(eta_date), weekdays = wday(eta_date, label = TRUE, abbr = TRUE, week_start = 1)) %>% 
-  ggplot(aes(x = weekdays, y = n, fill = factor(year))) +
+  count(weekdays = wday(eta_date, label = TRUE, abbr = TRUE, week_start = 1)) %>% 
+  ggplot(aes(x = weekdays, y = n)) +
   geom_col() +
-  facet_grid(~ year) +
-  scale_fill_manual(values = linecolor) +
   labs(
     # title = "Count of Cruise Arrivals per Day of Week",
     x = "",
@@ -423,8 +421,6 @@ data_clean_enriched %>%
 
 Most ships dock at the city port of Trasatlanticos which is the main gateway into the city. The breakdown below shows how traffic is distributed across terminals.
 
-*Note: many 2024 arrivals were recorded without a confirmed berth only indicating "Pendiente Confirmación".*
-
 ```{r}
 #| label: city port specification
 
@@ -440,12 +436,13 @@ data_clean_enriched %>%
     row.names = TRUE)
 
 ```
+*Note: many 2024 arrivals were recorded without a confirmed berth only indicating "Pendiente Confirmación".*
 
-<br /> The largest ship by length was the *Anthem of the Seas*, measuring 347 meters. In terms of capacity, the Arvia stands out, carrying up to 6.685 passengers. Notably, the Arvia appears twice in the table below, reflecting an increase in capacity between the 2024 and 2025 seasons.
+<br /> The largest ship by length was the *Anthem of the Seas*, measuring 347 meters. In terms of capacity, the Arvia stands out, carrying up to 6.685 passengers.
 
-To put this into perspective, lining up all cruise ships arriving in 2025 only would create a chain over 48 kilometers long — nearly reaching from A Coruña to Ferrol.
+To put this into perspective, lining up all cruise ships arriving in the year 2025 would create a chain over 48 kilometers long — as long as the road from A Coruña to Ferrol.
 
-::: panel-tabset
+:::: panel-tabset
 #### Largest Cruises (length)
 
 ```{r}
@@ -475,6 +472,8 @@ data_clean %>%
     row.names = TRUE)
 
 ```
+
+*Note: the Arvia appears twice in this table, reflecting an increase in capacity between the 2024 and 2025 seasons.*
 :::
 
 ### What does it all mean for us, the residents?
@@ -486,4 +485,4 @@ This creates both opportunity and pressure, making timing and distribution key l
 ### References
 
 - Data was collected from the official website of [Autoridad Portuaria de A Coruña](https://www.puertocoruna.com){target="_blank"} through a web scraping algorithm and analysed using the R programming language.
-- Check out my [GitHub repository](https://github.com/dani-f/){target="_blank"} to see how this report was compiled and adapt it to any country.
+- Check out my [GitHub repository](https://github.com/dani-f/){target="_blank"} to see how the data was scraped and how this report was compiled.
