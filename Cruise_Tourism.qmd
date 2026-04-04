@@ -279,7 +279,7 @@ plot_data %>%
 
 ```
 
-But cruise tourisms arrives in waves. After a quiet winter, activity accelerates sharply from spring onwards and lasts through summer and early autumn. The pattern remains consistent: a concentrated surge between April and October, when the vast majority of passengers arrive.
+But cruise tourism comes in waves. After a quiet winter, activity accelerates sharply from spring onwards and lasts through summer and early autumn. The pattern remains consistent: a concentrated surge between April and October, when the vast majority of passengers arrive.
 
 ```{r}
 #| label: seasonality
@@ -441,7 +441,7 @@ data_clean_enriched %>%
 
 <br /> The largest ship by length was the *Anthem of the Seas*, measuring 347 meters. In terms of capacity, the Arvia stands out, carrying up to 6.685 passengers.
 
-To put this into perspective, lining up all cruise ships arriving in the year 2025 would create a chain over 48 kilometers long — as long as the route from A Coruña to Ferrol.
+To put this into perspective, lining up all cruise ships arriving in the year 2025 would create a chain over 48 kilometers long — as long as the route from La Coruña to Ferrol.
 
 ::: panel-tabset
 #### Largest Cruises (length)
