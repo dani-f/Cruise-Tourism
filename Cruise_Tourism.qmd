@@ -486,4 +486,4 @@ This creates both opportunity and pressure, making timing and distribution key l
 ### References
 
 - Data was collected from the official website of [Autoridad Portuaria de A Coruña](https://www.puertocoruna.com){target="_blank"} through a web scraping algorithm and analysed using the R programming language.
-- Check out my [GitHub repository](https://github.com/dani-f/Cruise-Tourism){target="_blank"} to see how the data was scraped and how this report was compiled.
+- Check out my [GitHub repository](https://github.com/dani-f/Cruise-Tourism){target="_blank"} to see how the data was scraped, cleaned and analysed and how this report was compiled.
