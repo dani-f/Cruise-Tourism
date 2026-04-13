@@ -221,14 +221,11 @@ get_port_country <- function(port) {
     )
 }
 
-data_clean_enriched = data_clean %>%
+# The "data_clean_enriched" dataset is not used in this file!
+data_clean_enriched <- data_clean %>%
   mutate(
     puertoAnterior_country = get_port_country(puertoAnterior_clean),
     puertoPosterior_country = get_port_country(puertoPosterior_clean)
-  ) %>% 
-  mutate(
-    puertoAnterior_clean = str_to_title(puertoAnterior_clean),
-    puertoPosterior_clean = str_to_title(puertoPosterior_clean)
   )
 ```
 
@@ -239,7 +236,7 @@ La Coruña welcomes around 500.000 visitors by sea every year. This is two times
 ```{r}
 #| label: total pax per year
 
-plot_data <- data_clean_enriched %>% 
+plot_data <- data_clean %>% 
   group_by(year = year(eta_date), eta_date) %>% 
   summarise(pax_per_day = sum(paxEstimados)) %>% # ungroups the last group (per day group); so it's still grouped by year
   mutate(
@@ -284,7 +281,7 @@ But cruise tourism comes in waves. After a quiet winter, activity accelerates sh
 ```{r}
 #| label: seasonality
 
-data_clean_enriched %>% 
+data_clean %>% 
   mutate(
     year = year(eta_date),
     month = month(eta_date, label = TRUE, abbr = TRUE)
@@ -312,7 +309,7 @@ Here are the five busiest days since 2024.
 ```{r}
 #| label: pax per day
 
-data_clean_enriched %>% 
+data_clean %>% 
   group_by(Date = format(eta_date, "%A, %B %e, %Y")) %>% 
   summarise(`Total Passengers` = sum(paxEstimados)) %>%
   arrange(-`Total Passengers`) %>% 
@@ -326,7 +323,7 @@ data_clean_enriched %>%
 ```{r}
 #| label: weekdays
 
-data_clean_enriched %>%
+data_clean %>%
   count(weekdays = wday(eta_date, label = TRUE, abbr = TRUE, week_start = 1)) %>% 
   ggplot(aes(x = weekdays, y = n)) +
   geom_col() +
@@ -376,15 +373,20 @@ One port stands out: Southampton. Since 2024, more than 370.000 passengers have 
 ```{r}
 #| label: origin
 
-data_clean_enriched %>%
+data_clean %>%
+  mutate(
+    puertoAnterior_clean = str_to_title(puertoAnterior_clean),
+    puertoPosterior_clean = str_to_title(puertoPosterior_clean)
+  ) %>% 
   group_by(puertoAnterior_clean) %>% 
-  summarise(n = n(), pax = sum(paxEstimados)) %>% 
+  summarise(pax = sum(paxEstimados), n = n()) %>% 
   arrange(-pax) %>% 
   head(5) %>% 
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Origin Port", "Count of Cruises", "Total Passengers"),
+    col.names = c("Origin Port", "Total Passengers", "Count of Cruises"),
     row.names = TRUE)
+
 ```
 
 #### Where do they go next?
@@ -392,15 +394,20 @@ data_clean_enriched %>%
 ```{r}
 #| label: destination
 
-data_clean_enriched %>%
+data_clean %>%
+  mutate(
+    puertoAnterior_clean = str_to_title(puertoAnterior_clean),
+    puertoPosterior_clean = str_to_title(puertoPosterior_clean)
+  ) %>% 
   group_by(puertoPosterior_clean) %>% 
-  summarise(n = n(), pax = sum(paxEstimados)) %>% 
+  summarise(pax = sum(paxEstimados), n = n()) %>% 
   arrange(-pax) %>% 
   head(5) %>% 
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Destination Port", "Count of Cruises", "Total Passengers"),
+    col.names = c("Destination Port", "Total Passengers", "Count of Cruises"),
     row.names = TRUE)
+
 ```
 
 #### Full Route
@@ -408,14 +415,18 @@ data_clean_enriched %>%
 ```{r}
 #| label: full route
 
-data_clean_enriched %>%
+data_clean %>%
+  mutate(
+    puertoAnterior_clean = str_to_title(puertoAnterior_clean),
+    puertoPosterior_clean = str_to_title(puertoPosterior_clean)
+  ) %>% 
   group_by(puertoAnterior_clean, puertoPosterior_clean) %>% 
-  summarise(n = n(), pax = sum(paxEstimados)) %>% 
+  summarise(pax = sum(paxEstimados), n = n()) %>% 
   arrange(-pax) %>% 
   head(5) %>% 
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Origin Port", "Destination Port", "Count of Cruises", "Total Passengers"),
+    col.names = c("Origin Port", "Destination Port", "Total Passengers", "Count of Cruises"),
     row.names = TRUE)
 ```
 :::
@@ -425,7 +436,7 @@ Most ships dock at the city port of Trasatlanticos which is the main gateway int
 ```{r}
 #| label: city port specification
 
-data_clean_enriched %>%
+data_clean %>%
   mutate(nombreMuelle = str_to_title(nombreMuelle)) %>% 
   mutate(nombreMuelle = if_else(nombreMuelle == "Pendiente Confirmación", "Pendiente Confirmación*", nombreMuelle)) %>% 
   group_by(nombreMuelle) %>%
