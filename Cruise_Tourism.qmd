@@ -2,7 +2,7 @@
 freeze: false
 title: "Cruise Tourism Is More Extreme Than You Think"
 author: "Me"
-date: today
+date: "2026-04-02"
 categories: [Data Analytics, Social Processes]
 format:
   html:
@@ -16,6 +16,10 @@ fig-asp: 0.618
 out-width: "100%"
 fig-align: center
 ---
+
+::: {.callout-note}
+This article was first published on `2026-04-02` and last updated on ``r Sys.Date()``.
+:::
 
 ```{r}
 #| label: setup
