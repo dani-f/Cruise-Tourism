@@ -85,7 +85,7 @@ save(data, file = paste0("data/cruises_", today(), ".RData"))
 ```{r}
 #| label: load data
 
-file_name <- "data/cruises_2026-03-31.RData"
+file_name <- "data/cruises_2026-05-07.RData"
 load(file_name)
 ```
 
@@ -168,7 +168,9 @@ data_clean <- data %>%
   mutate(
     puertoAnterior_clean = replace_values(puertoAnterior_clean, from = port_map$from, to = port_map$to),
     puertoPosterior_clean = replace_values(puertoPosterior_clean, from = port_map$from, to = port_map$to)
-  )
+  ) %>% 
+  # Filter data to only consider data until the last full month
+  filter(eta_date < floor_date(today(), unit = "months"))
 
 # Enrich data with Country information
 get_port_country <- function(port) {
@@ -231,6 +233,7 @@ data_clean_enriched <- data_clean %>%
     puertoAnterior_country = get_port_country(puertoAnterior_clean),
     puertoPosterior_country = get_port_country(puertoPosterior_clean)
   )
+
 ```
 
 ### Analysis
