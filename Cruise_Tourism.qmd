@@ -2,7 +2,7 @@
 freeze: false
 title: "Cruise Tourism Is More Extreme Than You Think"
 author: "Me"
-date: "2026-04-02"
+date: "2026-04-01"
 categories: [Data Analytics, Social Processes]
 format:
   html:
@@ -49,7 +49,7 @@ Each year, thousands of cruise passengers arrive in the beautiful Spanish city o
 This analysis breaks down the patterns behind cruise arrivals using data since 2024 scraped from the official website of [Autoridad Portuaria de A Coruña](https://www.puertocoruna.com){target="_blank"}.
 
 ::: {.callout-note}
-This article was first published on `2026-04-02` and last updated on ``r Sys.Date()``.
+This article was first published on `2026-04-01` and last updated on ``r Sys.Date()``.
 :::
 
 ```{r}
