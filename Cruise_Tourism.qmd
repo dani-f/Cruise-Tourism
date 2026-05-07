@@ -238,7 +238,7 @@ data_clean_enriched <- data_clean %>%
 
 ### Analysis
 
-La Coruña welcomes around 500.000 visitors by sea every year. This is two times the equivalent of its entire population. And numbers seem to still increase in 2026.
+La Coruña welcomes around 500.000 visitors by sea every year. This is two times the equivalent of its entire population. Let's check if numbers are increasing in 2026.
 
 ```{r}
 #| label: total pax per year
@@ -283,7 +283,7 @@ plot_data %>%
 
 ```
 
-But cruise tourism comes in waves. After a quiet winter, activity accelerates sharply from spring onwards and lasts through summer and early autumn. The pattern remains consistent: a concentrated surge between April and October, when the vast majority of passengers arrive.
+But cruise tourism comes in waves. After a quiet winter, activity accelerates sharply from spring onwards and lasts through summer and early autumn. In the last years, the pattern has remained consistent: a concentrated surge between April and October, when the vast majority of passengers typically arrives. However, in 2026, the city enjoyed a relatively calm April.
 
 ```{r}
 #| label: seasonality
@@ -372,7 +372,7 @@ data_clean %>%
 
 So far, we have seen how many tourists come and when. But who is actually sending all these visitors?
 
-One port stands out: Southampton. Since 2024, more than 370.000 passengers have arrived from there alone. In fact, the most frequent route links Southampton, La Coruña and Palma de Mallorca — placing the city on a major cruise corridor.
+One port stands out: Southampton. Since 2024, more than 375.000 passengers have arrived from there alone. In fact, the most frequent route links Southampton, La Coruña and Palma de Mallorca — placing the city on a major cruise corridor.
 
 ::: panel-tabset
 #### Where do they come from?
