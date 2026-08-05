@@ -393,7 +393,7 @@ data_clean %>%
   head(5) %>% 
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Origin Port", "Total Passengers", "Count of Cruises"),
+    col.names = c("Origin Port", "Total Passengers", "Count of Cruise Arrivals"),
     row.names = TRUE)
 
 ```
@@ -414,7 +414,7 @@ data_clean %>%
   head(5) %>% 
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Destination Port", "Total Passengers", "Count of Cruises"),
+    col.names = c("Destination Port", "Total Passengers", "Count of Cruise Arrivals"),
     row.names = TRUE)
 
 ```
@@ -435,7 +435,7 @@ data_clean %>%
   head(5) %>% 
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Origin Port", "Destination Port", "Total Passengers", "Count of Cruises"),
+    col.names = c("Origin Port", "Destination Port", "Total Passengers", "Count of Cruise Arrivals"),
     row.names = TRUE)
 ```
 :::
@@ -464,24 +464,24 @@ data_clean %>%
 To put this into perspective, lining up all cruise ships arriving in the year 2025 would create a chain over 48 kilometers long — as long as the route from La Coruña to Ferrol.
 
 ::: panel-tabset
-#### Largest Cruises (length)
+#### Longest Cruise Ship
 
 ```{r}
-#| label: longest cruises
+#| label: longest cruise ship
 
 data_clean %>%
   distinct(nombreBuque = str_to_title(nombreBuque), eslora) %>%
   arrange(-eslora) %>% 
   head(5) %>% 
-  kable(col.names = c("Cruise Name", "Length (m)"),
+  kable(col.names = c("Cruise Ship Name", "Length (m)"),
   row.names = TRUE)
 
 ```
 
-#### Largest Cruises (passengers)
+#### Largest Cruise Ship (Passenger Capacity)
 
 ```{r}
-#| label: largest cruise
+#| label: largest cruise ship
 
 data_clean %>%
   distinct(nombreBuque = str_to_title(nombreBuque), paxEstimados) %>%
@@ -489,7 +489,7 @@ data_clean %>%
   head(5) %>%
   kable(
     format.args = list(big.mark = ".", decimal.mark = ","),
-    col.names = c("Cruise Name", "Total Passengers"),
+    col.names = c("Cruise Ship Name", "Total Passengers"),
     row.names = TRUE)
 
 ```
