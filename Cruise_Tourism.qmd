@@ -74,8 +74,14 @@ raw_data_list <- map(url_list, fetch_data) %>%
   # merge into one single list 
   flatten() 
 
-data <- raw_data_list %>% 
-  map_dfr(as_tibble)
+data <- raw_data_list %>%
+  map_dfr(function(x) {
+    x <- map(x, function(value) {
+      if (is.null(value)) NA else value
+    })
+
+    as_tibble(x)
+  })
 
 # Save data
 save(data, file = paste0("data/cruises_", today(), ".RData"))
